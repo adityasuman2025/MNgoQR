@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -22,25 +24,38 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 //defining variables
     ImageView qrView;
     Button genBtn;
     Button scanBtn;
     EditText qrText;
+    TextView viewText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        qrView = (ImageView)findViewById(R.id.qrView);
-        genBtn = (Button)findViewById(R.id.genBtn);
-        scanBtn = (Button)findViewById(R.id.scanBtn);
-        qrText = (EditText)findViewById(R.id.qrText);
+        qrView = (ImageView) findViewById(R.id.qrView);
+        genBtn = (Button) findViewById(R.id.genBtn);
+        scanBtn = (Button) findViewById(R.id.scanBtn);
+        qrText = (EditText) findViewById(R.id.qrText);
+        viewText = (TextView) findViewById(R.id.viewText);
 
-    //on clicking on generate button
+    //to get unique identification of a phone and displaying it
+        String androidId = Settings.Secure.getString(getContentResolver(),
+                Settings.Secure.ANDROID_ID); // android id
+        String uniqueID = android.os.Build.SERIAL; // Serial_no
+
+    //to get current timestamps
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString();
+
+        viewText.setText("Android ID: " + androidId + "\nSerial Number: " + uniqueID + "\nTimeStamps: " + ts);
+
+
+        //on clicking on generate button
         genBtn.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -84,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+//for getting results after scanning the qr code
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {

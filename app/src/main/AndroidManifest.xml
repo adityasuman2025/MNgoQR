@@ -4,7 +4,7 @@
     package="in.mngo.attend1">
 
     <uses-permission android:name="android.permission.CAMERA"/>
-    <!--<uses-feature android:name="com.android.hardware.camera" />-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-feature android:name="com.android.hardware.camera.focus" />
 
     <application
