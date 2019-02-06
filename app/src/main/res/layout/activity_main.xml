@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="1000px"
         android:layout_weight="1"
-
         />
 
     <Button
@@ -28,11 +27,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Generate"
+        android:background="@color/orange"
+        android:textColor="@color/white"
         />
     <Button
         android:id="@+id/scanBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Scan"
+        android:background="@color/white"
         />
 </LinearLayout>
