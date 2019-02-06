@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
 
-        viewText.setText("Android ID: " + androidId + "\nSerial Number: " + uniqueID + "\nTimeStamps: " + ts);
+        //viewText.setText("Android ID: " + androidId + "\nSerial Number: " + uniqueID + "\nTimestamps: " + ts);
+        viewText.setText("A MNgo Creation\nDeveloper: Aditya Suman");
 
-
-        //on clicking on generate button
+    //on clicking on generate button
         genBtn.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
